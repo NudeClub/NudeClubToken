@@ -4,13 +4,18 @@ pragma solidity ^0.8.17;
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-// Nude club token first draft
 
 contract NubeClubToken is ERC20, Ownable{
     
     uint256 decimal = 10 ** 18;    
     uint256 immutable public maxSupply;
 
+    /// @notice Only 1billion tokens will ever be created
+    /// Starting off with minting an initial 50 million
+    /// @param _icoWallet 30% for the ICO
+    /// @param _treasure 40% to the treasury 
+    /// @param _teamWallet 20% to the dev wallet
+    /// @param _externalEntitiesWallet 10% for advisors and external entities
     constructor(address _icoWallet, address _treasury,
                 address _teamWallet, address _externalEntitiesWallet
     ) ERC20("Nude ClubTest", "NUDETest") {
